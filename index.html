@@ -21,6 +21,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- =======================================================
   * Template Name: DevFolio - v4.5.0
@@ -420,7 +421,7 @@
                       </h5>
                     </div>
                     <div>
-                      <form id="gform" action="https://script.google.com/macros/s/AKfycbznQP_yHwW6v6c1c_mr0cvuuEGtlAt_fMh72E0lp-ZVfmO4ObIV86_Qx1Idhn1Y0OHe/exec" method="POST"  class="php-email-form">
+                      <form id="submit-form" action="" method="POST"  class="">
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
@@ -434,7 +435,7 @@
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                              <input type="text" class="form-control" name="color" id="subject" placeholder="Subject" required>
                             </div>
                           </div>
                           <div class="col-md-12">
@@ -442,11 +443,11 @@
                               <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                             </div>
                           </div>
-                          <div class="col-md-12 text-center my-3">
+                          <!-- <div class="col-md-12 text-center my-3">
                             <div class="loading">Loading</div>
-                            <!-- <div class="error-message"></div> -->
+                            <div class="error-message"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
-                          </div>
+                          </div> -->
                           <div class="col-md-12 text-center">
                             <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
                           </div>
@@ -516,6 +517,25 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbykqi6AK3ykf8v5kyDA95SS0KWFD9jrkottJp0bDQ/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+</script>
 
 </body>
 
